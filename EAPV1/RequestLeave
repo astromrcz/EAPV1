@@ -1,0 +1,50 @@
+using System;
+using System.Data.SqlClient;
+using System.Windows.Forms;
+
+
+namespace LeaveForm
+{
+    public partial class Form1 : Form
+    {
+
+        public Form1()
+        {
+            InitializeComponent();
+            
+            
+        }
+        public class DatabaseHelper
+        {
+            private static string connectionString = "Server=WIN-F9F74B9KDUN;Database=EAPDB;Trusted_Connection=True;";
+
+        }
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            string leaveType = cbLeaveType.SelectedItem?.ToString();
+            DateTime startDate = dtpStart.Value;
+            DateTime endDate = dtpEnd.Value;
+
+            if (string.IsNullOrEmpty(leaveType))
+            {
+                MessageBox.Show("Please fill out all fields.");
+                return;
+            }
+            if (endDate < startDate)
+            {
+                MessageBox.Show("End date must be after start date.");
+                return;
+
+            }
+            MessageBox.Show("You have Requested a leave");
+
+        
+        }
+    }
+}
+
